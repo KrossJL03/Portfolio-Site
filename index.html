@@ -1,0 +1,189 @@
+<html>
+<head>
+
+	<title>Jenny Kross</title>
+	
+<!--	
+			<link href="phonestyle.css" 	rel="stylesheet" 	type="text/css" 	media="screen and (max-device-width: 800px)">
+			<link href="mainstyle.css" 		rel="stylesheet" 	type="text/css" 	media="screen and (min-device-width: 800px)">
+			
+			<script src="scripts.js"></script>
+	
+			<link rel="icon" type="image/png" href="icon.png"/>
+-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<style>
+body{
+	margin: 0px;
+	padding: 0px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 11pt;
+}
+
+h1{
+	font-family: "Courier New", Courier, monospace;
+	margin: 0px 0px 20px 0px;
+	padding: 0px;
+}
+
+@keyframes blink {
+    0%   {opacity: 0;}
+    5%   {opacity: 1;}
+	50%  {opacity: 1;}
+    55%  {opacity: 0;}
+	100% {opacity: 0;}
+}
+
+#blinker{
+	position: relative;
+	background: #000;
+	width: 3px;
+	height: 20pt;
+	margin: 5px 10px -4px 10px;
+	box-sizing: border-box;
+	opacity: 1;
+	display: inline-block;
+	animation-name: blink;
+    animation-duration: 1.25s;
+    animation-iteration-count: infinite;
+}
+
+ul{
+	list-style-type: square;
+}
+
+nav{
+	width: 150px;
+	height: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background: #9cf;
+	box-sizing: border-box;
+	font-family: "Courier New", Courier, monospace;
+	text-transform: uppercase;
+}
+
+nav ul{
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	display: table;
+}
+
+nav ul li{
+	list-style-type: none;
+	padding: 10px;
+	box-sizing: boarder-box;
+	height: 20%;
+	display: table-row;
+}
+
+nav ul li a{
+	text-decoration: none;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	padding: 20px;
+	box-sizing: border-box;
+
+	transition: 		all .5s ease-in-out;
+	-o-transition: 		all .5s ease-in-out;
+	-webkit-transition: all .5s ease-in-out;
+}
+
+nav ul li a:hover{
+	background: #333;
+	color: #9cf;
+}
+
+#content{
+	width: 100%;
+	height: 100%;
+	padding: 30px 30px 30px 180px;
+	box-sizing: border-box;
+}
+
+.github{
+	background: #333;
+	border-radius: 10px;
+	height: 40px;
+	padding: 5px 5px 5px 5px;
+	box-sizing: border-box;
+	display: block;
+	width: 115px;
+}
+
+.github img{
+	float: left;
+	height: 30px;
+	display: block;
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+	<ul>
+		<li><a href="">Home</a></li>
+		<li><a href="">About Me</a></li>
+		<li><a href="">Current Projects</a></li>
+		<li><a href="">Web Design Portfolio</a></li>
+		<li><a href="">Graphic Design Portfolio</a></li>
+	</ul>
+</nav>
+
+<div id="content">
+
+<h1>Home<div id="blinker"></span></h1>
+<h1>About Me<div id="blinker"></span></h1>
+<h1>Current Projects<div id="blinker"></span></h1>
+
+<div class="github"><a href=""><img src="github.png"></a></div>
+
+
+<h1>Web Design Portfolio<div id="blinker"></span></h1>
+Languages I'm proficient in:
+<ul>
+	<li>HTML</li>
+	<li>CSS</li>
+	<li>Bootstrap</li>
+	<li>Javascript</li>
+	<li>jQuery</li>
+	<li>PHP</li>
+	<li>Java</li>
+</ul>
+Software I'm proficient in:
+<ul>
+	<li>Notepad++</li>
+	<li>Adobe Dreamweaver</li>
+	<li>MySQL</li>
+	<li>Eclipse</li>
+	<li>Netbeans</li>
+</ul>
+
+
+<h1>Graphic Design Portfolio<div id="blinker"></span></h1>
+Software I'm proficient in:
+<ul>
+	<li>Adobe
+		<ul>
+			<li>Photoshop</li>
+			<li>Illustrator</li>
+			<li>After Effects</li>
+			<li>Premier</li>
+			<li>Flash</li>
+		</ul>	
+	</li>
+	<li>Corel Paint Shop Pro</li>
+	<li>Paint Tool SAI</li>
+	<li>Krita</li>
+	<li>FireAlpaca</li>
+</ul>
+
+</div>
+
+</body>
+</html>
