@@ -23,8 +23,10 @@ body{
 
 h1{
 	font-family: "Courier New", Courier, monospace;
-	margin: 0px 0px 20px 0px;
-	padding: 0px;
+	margin: 0px -30px 20px -30px;
+	padding: 0px 30px 0px 30px;
+	display: block;
+	background: #ccc;
 }
 
 @keyframes blink {
@@ -63,13 +65,20 @@ nav{
 	box-sizing: border-box;
 	font-family: "Courier New", Courier, monospace;
 	text-transform: uppercase;
+	color: #69c;
+	padding: 0px 0px 0px 15px;
 }
 
 nav ul{
 	margin: 0px;
 	padding: 0px;
 	height: 100%;
+	width: 150px;
 	display: table;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 10px;
 }
 
 nav ul li{
@@ -93,8 +102,21 @@ nav ul li a{
 	-webkit-transition: all .5s ease-in-out;
 }
 
-nav ul li a:hover{
-	background: #333;
+nav ul li a{
+	text-decoration: none;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	padding: 20px;
+	box-sizing: border-box;
+
+	transition: 		all .5s ease-in-out;
+	-o-transition: 		all .5s ease-in-out;
+	-webkit-transition: all .5s ease-in-out;
+}
+
+nav ul li:hover a{
+	background: rgba(0,0,0,.8);
 	color: #9cf;
 }
 
@@ -126,6 +148,20 @@ nav ul li a:hover{
 <body>
 
 <nav>
+	127<br>
+	128<br>
+	129<br>
+	130<br>
+	131<br>
+	132<br>
+	133<br>
+	134<br>
+	135<br>
+	136<br>
+	137<br>
+	138<br>
+	139<br>
+	140<br>
 	<ul>
 		<li><a href="">Home</a></li>
 		<li><a href="">About Me</a></li>
@@ -140,6 +176,10 @@ nav ul li a:hover{
 <h1>Home<div id="blinker"></span></h1>
 <h1>About Me<div id="blinker"></span></h1>
 <h1>Current Projects<div id="blinker"></span></h1>
+
+- Reflexology
+
+Part of a web-based, virtual pets game combining elements from Neopets, Harvest Moon, and Dungeons & Dragons. This section involves a daily click event used to optain materials, seeds, and bait for crafting tools, gardening, and fishing respectively. Both gardening and fishing are done through idle gameplay.
 
 <div class="github"><a href=""><img src="github.png"></a></div>
 
@@ -163,6 +203,10 @@ Software I'm proficient in:
 	<li>Eclipse</li>
 	<li>Netbeans</li>
 </ul>
+
+A simple click-based take on Solitaire using vanilla Javascript.
+
+<div class="github"><a href=""><img src="github.png"></a></div>
 
 
 <h1>Graphic Design Portfolio<div id="blinker"></span></h1>
