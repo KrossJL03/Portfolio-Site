@@ -150,6 +150,14 @@ nav ul li:hover a{
 	box-sizing: border-box;
 }
 
+.container{
+	display: flex;
+}
+
+.item{
+	flex-grow: 1;
+}
+
 .github{
 	background: #333;
 	border-radius: 10px;
@@ -168,6 +176,7 @@ nav ul li:hover a{
 
 XMP{
 	display: inline-block;
+	font-family: "Courier New", Courier, monospace;
 }
 
 #aboutme,
@@ -227,7 +236,8 @@ Part of a web-based, virtual pets game combining elements from Neopets, Harvest 
 
 <div id="webdesign">
 <h1>Web Design Portfolio</h1>
-<p>Languages I'm proficient in:</p>
+<div class="container">
+<div class="item"><p>Languages I'm proficient in:</p>
 <ul>
 	<li>HTML</li>
 	<li>CSS</li>
@@ -237,7 +247,9 @@ Part of a web-based, virtual pets game combining elements from Neopets, Harvest 
 	<li>PHP</li>
 	<li>Java</li>
 </ul>
+</div>
 
+<div class="item">
 <p>Software I'm proficient in:</p>
 <ul>
 	<li>Notepad++</li>
@@ -246,9 +258,10 @@ Part of a web-based, virtual pets game combining elements from Neopets, Harvest 
 	<li>Eclipse</li>
 	<li>Netbeans</li>
 </ul>
+</div>
+</div>
 
-
-A simple click-based take on Solitaire using vanilla Javascript.
+<p>A simple click-based take on Solitaire using vanilla Javascript.</p>
 
 <div class="github"><a href=""><img src="github.png"></a></div>
 </div>
@@ -311,7 +324,59 @@ displayWebDesign();
 
 function displayWebDesign(){
 
-	var text = document.getElementById("webdesign").innerHTML;
+	var text = document.getElementById("webdesign").getElementsByClassName("item");
+	var lines1 = text[0].innerHTML.split(/\r\n|\r|\n/g);
+	var lines2 = text[1].innerHTML.split(/\r\n|\r|\n/g);
+
+	text[0].innerHTML = "<div class='holder'></div><div class='holder'></div>";
+	text[1].innerHTML = "<div class='holder'></div><div class='holder'></div>";
+	var webdesign1 = text[0].getElementsByClassName("holder");
+	var webdesign2 = text[1].getElementsByClassName("holder");
+
+	
+	
+	var printLetter1 = printing(lines1, webdesign1);
+	var printLetter2 = printing(lines2, webdesign2);
+	
+	
+	function printing(lines, webdesign){
+		var line = 0;
+		var a=0;
+		
+		var printLetter = setInterval(function(){
+		
+			webdesign[1].innerHTML = '<XMP>' + lines[line].substring(0, ++a) + '</XMP><div class="blinker"></div>';
+			
+			// if the line is finished
+			if(a>=lines[line].length){
+			
+				// if there are still lines
+				if(line<lines.length-1)		{
+					a=0; 
+					line++;
+					var print = "";
+					for(var b=0; b<line; b++){ print += lines[b]; }
+					webdesign[0].innerHTML = print;
+					webdesign[1].innerHTML = "";
+					
+				}
+				
+				// if everything is printed
+				else{ 
+					clearInterval(printLetter);
+					webdesign[1].innerHTML = "";
+				}
+				
+			}
+			
+		}, 20);
+		
+	}
+
+}
+
+function oldDisplay(){
+var text = document.getElementById("webdesign").innerHTML;
 	document.getElementById("webdesign").innerHTML = "<div class='holder'></div><div class='holder'></div>";
 	var lines = text.split(/\r\n|\r|\n/g);
 	var webdesign = document.getElementById("webdesign").getElementsByClassName("holder");
@@ -320,10 +385,8 @@ function displayWebDesign(){
 	for(var a=0; a<webdesign.length; a++){
 		
 	}
-
 	
 */
-
 	var line = 0;
 	var a=0;
 	
@@ -348,8 +411,6 @@ function displayWebDesign(){
 		}
 		
 	}, 20);	
-
-
 }
 
 </script>
