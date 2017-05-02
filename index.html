@@ -184,6 +184,46 @@ XMP{
 	font-size: 10pt;
 }
 
+.tag{
+	color: #00f;
+}
+
+.code{
+	font-family: "Courier New", Courier, monospace;
+	font-size: 10pt;
+	line-height: 12pt;
+}
+/*
+.code p,
+.code ul,
+.code li{
+	margin: 0px;
+	padding: 0px;
+	display: block;
+}
+
+.code li{
+	margin-left: 30px;
+	list-style-type: none;
+}
+
+.code p:before,
+.code p:after,
+.code ul:before,
+.code ul:after,
+.code li:before,
+.code li:after	{ color: #00f; }
+
+.code p:before	{ content: "<p>"; }
+.code p:after	{ content: "</p>"; }
+.code li:before	{ content: "<li>"; }
+.code li:after	{ content: "</li>"; }
+.code ul:before	{ content: "<ul>"; }
+.code ul:after	{ content: "</ul>"; }
+*/
+
+.indent{ margin-left: 30px; }
+
 #aboutme,
 #currentprojects,
 #graphicdesign{ display: none; }
@@ -337,6 +377,94 @@ displayWebDesign();
 
 function displayWebDesign(){
 
+	// grab text from TDs
+	var text = document.getElementById("webdesign").getElementsByTagName("td");
+	
+	// cycle through each TD
+	for(var a=0; a<text.length; a++){
+	
+		// separate lines
+		var lines = text[a].innerHTML.split(/\r\n|\r|\n/g);;
+		
+		// empty and format TD
+		text[a].innerHTML = "";
+		text[a].classList.add("code");
+		
+		// print letters
+		var printLetter = printing(lines, text[a]);
+
+	}
+	
+	function printing(lines, text){
+	
+		var line = 0;			// line of text
+		var a=0;				// letter of line
+		var indent = -1;		// heirarchy
+		
+		var printLetter = setInterval(function(){
+			
+			// if this line isn't empty
+			if(lines[line].length>0){
+			
+				// search for <
+				if(lines[line].substring(a, a+1)==="\<"){ 
+				
+					indent++;	// increase heirarchy
+					a++;		// skip to next letter
+					
+					// print tag class
+					var print = "<span class='tag";
+
+						// if / is found, cose heirarchy
+						if(lines[line].substring(a, a+1)==="/"){ indent = indent-2; }
+						
+						for(var b=0; b<indent; b++){ print += " indent"; }
+						print += "'>&lt;";
+					
+					// collect tag
+					for(; lines[line].substring(a-1, a)!=="\>"; a++){
+						print += lines[line].substring(a, a+1);
+					}
+					
+					// print tag with formatting
+					print += "</span>";
+					text.innerHTML += print;
+					
+				}
+				
+				// else just print letter
+				else{ text.innerHTML += lines[line].substring(a, ++a); }
+				
+			}
+			
+			// else skip letter
+			else{ a++; }
+			
+			// if the line is finished
+			if(a>lines[line].length){	
+			
+				if(lines[line].length>0){
+					text.innerHTML += "<br>";
+				}
+			
+				// if there are still lines
+				if(line<lines.length-1){
+					a=0;
+					line++;
+				}
+				
+				else{ clearInterval(printLetter); }
+				
+			}
+			
+		}, 200);
+		
+	}
+
+}
+
+function old(){
+
 	var text = document.getElementById("webdesign").getElementsByTagName("td");
 	
 	for(var a=0; a<text.length; a++){
@@ -418,11 +546,7 @@ function displayWebDesign(){
 								
 							}
 							
-						}, 20);
-						
-						
-						
-						
+						}, 20);						
 						
 					}, 500);
 					clearInterval(printLetter);
@@ -436,43 +560,6 @@ function displayWebDesign(){
 
 }
 
-function oldDisplay(){
-var text = document.getElementById("webdesign").innerHTML;
-	document.getElementById("webdesign").innerHTML = "<div class='holder'></div><div class='holder'></div>";
-	var lines = text.split(/\r\n|\r|\n/g);
-	var webdesign = document.getElementById("webdesign").getElementsByClassName("holder");
-	
-/*	console.log(webdesign);
-	for(var a=0; a<webdesign.length; a++){
-		
-	}
-	
-*/
-	var line = 0;
-	var a=0;
-	
-	var printLetter = setInterval(function(){
-	
-		webdesign[1].innerHTML = '<XMP>' + lines[line].substring(0, ++a) + '</XMP><div class="blinker"></div>';
-		
-		// if the line is finished
-		if(a>=lines[line].length){
-		
-			// if there are still lines
-			if(line<lines.length-1)		{
-				a=0; 
-				webdesign[0].innerHTML += lines[line++];
-				webdesign[1].innerHTML = "";
-				
-			}
-			
-			// if everything is printed
-			else{ clearInterval(printLetter); }
-			
-		}
-		
-	}, 20);	
-}
 
 </script>
 </html>
