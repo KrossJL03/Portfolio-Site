@@ -177,11 +177,16 @@ nav ul li:hover a{
 XMP{
 	display: inline-block;
 	font-family: "Courier New", Courier, monospace;
+	padding: 0px;
+	border: 1px solid #000;
+	margin: 0px 0px 0px 0px;
 }
 
 #aboutme,
 #currentprojects,
 #graphicdesign{ display: none; }
+
+
 
 </style>
 </head>
@@ -236,9 +241,9 @@ Part of a web-based, virtual pets game combining elements from Neopets, Harvest 
 
 <div id="webdesign">
 <h1>Web Design Portfolio</h1>
-<table>
+<table width="100%">
 	<tr>
-		<td>
+		<td width="50%" valign="top">
 			<p>Languages I'm proficient in:</p>
 			<ul>
 				<li>HTML</li>
@@ -250,7 +255,7 @@ Part of a web-based, virtual pets game combining elements from Neopets, Harvest 
 				<li>Java</li>
 			</ul>
 		</td>
-		<td>
+		<td width="50%" valign="top">
 			<p>Software I'm proficient in:</p>
 			<ul>
 				<li>Notepad++</li>
@@ -263,9 +268,13 @@ Part of a web-based, virtual pets game combining elements from Neopets, Harvest 
 	</tr>
 </table>
 
-<p>A simple click-based take on Solitaire using vanilla Javascript.</p>
+	<tr>
+		<td colspan="2" width="100%" valign="top">
+			<p>A simple click-based take on Solitaire using vanilla Javascript.</p>
+			<div class="github"><a href=""><img src="github.png"></a></div>
+		</td>
+	</tr>
 
-<div class="github"><a href=""><img src="github.png"></a></div>
 </div>
 
 <div id="graphicdesign">
@@ -326,19 +335,17 @@ displayWebDesign();
 
 function displayWebDesign(){
 
-	var text = document.getElementById("webdesign").getElementsByClassName("item");
-	var lines1 = text[0].innerHTML.split(/\r\n|\r|\n/g);
-	var lines2 = text[1].innerHTML.split(/\r\n|\r|\n/g);
-
-	text[0].innerHTML = "<div class='holder'></div><div class='holder'></div>";
-	text[1].innerHTML = "<div class='holder'></div><div class='holder'></div>";
-	var webdesign1 = text[0].getElementsByClassName("holder");
-	var webdesign2 = text[1].getElementsByClassName("holder");
-
+	var text = document.getElementById("webdesign").getElementsByTagName("td");
 	
-	
-	var printLetter1 = printing(lines1, webdesign1);
-	var printLetter2 = printing(lines2, webdesign2);
+	for(var a=0; a<text.length; a++){
+		console.log("loop");
+		var lines = text[a].innerHTML.split(/\r\n|\r|\n/g);
+		text[a].innerHTML = "<div class='holder'></div><div class='holder'></div>";
+		var webdesign = text[a].getElementsByClassName("holder");
+		
+		var printLetter = printing(lines, webdesign);
+		
+	}
 	
 	
 	function printing(lines, webdesign){
@@ -347,6 +354,7 @@ function displayWebDesign(){
 		
 		var printLetter = setInterval(function(){
 		
+			lines[line] = lines[line].replace(/\t/g, "");		
 			webdesign[1].innerHTML = '<XMP>' + lines[line].substring(0, ++a) + '</XMP><div class="blinker"></div>';
 			
 			// if the line is finished
@@ -356,9 +364,9 @@ function displayWebDesign(){
 				if(line<lines.length-1)		{
 					a=0; 
 					line++;
-					var print = "";
-					for(var b=0; b<line; b++){ print += lines[b]; }
-					webdesign[0].innerHTML = print;
+					var print = "<XMP>";
+					for(var b=0; b<line; b++){ print += lines[b] + "\n"; }
+					webdesign[0].innerHTML = print + "</XMP>";
 					webdesign[1].innerHTML = "";
 					
 				}
