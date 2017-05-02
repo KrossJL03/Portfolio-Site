@@ -14,7 +14,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <style>
-body{
+body,
+table{
 	margin: 0px;
 	padding: 0px;
 	font-family: Verdana, Geneva, sans-serif;
@@ -62,7 +63,7 @@ h4:before	{ content:  "//"; }
 	position: relative;
 	background: #000;
 	width: 1px;
-	margin: 5px 0px -4px 0px;
+	margin: 0px 0px -4px 0px;
 	box-sizing: border-box;
 	opacity: 1;
 	height: 11pt;
@@ -72,7 +73,7 @@ h4:before	{ content:  "//"; }
     animation-iteration-count: infinite;
 }
 
-h1 .blinker{ height: 20pt; width: 2px;}
+h1 .blinker{ height: 20pt; width: 2px; margin: 5px 0px -4px 0px; }
 
 ul{
 	list-style-type: square;
@@ -178,8 +179,9 @@ XMP{
 	display: inline-block;
 	font-family: "Courier New", Courier, monospace;
 	padding: 0px;
-	border: 1px solid #000;
-	margin: 0px 0px 0px 0px;
+	margin: 0px;
+	line-height: 13pt;
+	font-size: 10pt;
 }
 
 #aboutme,
@@ -338,48 +340,97 @@ function displayWebDesign(){
 	var text = document.getElementById("webdesign").getElementsByTagName("td");
 	
 	for(var a=0; a<text.length; a++){
-		console.log("loop");
-		var lines = text[a].innerHTML.split(/\r\n|\r|\n/g);
-		text[a].innerHTML = "<div class='holder'></div><div class='holder'></div>";
-		var webdesign = text[a].getElementsByClassName("holder");
+	
+		var lines = text[a].innerHTML.replace(/\t/g, "").split(/\r\n|\r|\n/g);
+		text[a].innerHTML = "";
 		
-		var printLetter = printing(lines, webdesign);
-		
+		var printLetter = printing(lines, text[a]);
+
 	}
 	
 	
-	function printing(lines, webdesign){
+	function printing(lines, text){
+	
 		var line = 0;
 		var a=0;
+		var tempText = "";
 		
 		var printLetter = setInterval(function(){
-		
-			lines[line] = lines[line].replace(/\t/g, "");		
-			webdesign[1].innerHTML = '<XMP>' + lines[line].substring(0, ++a) + '</XMP><div class="blinker"></div>';
+			
+			if(lines[line].length>0){
+				text.innerHTML = tempText + "<XMP>" + lines[line].substring(0,++a) + "</XMP><div class='blinker'></div>";
+			}
+			else{ a++; }
 			
 			// if the line is finished
-			if(a>=lines[line].length){
+			if(a>lines[line].length){
 			
 				// if there are still lines
-				if(line<lines.length-1)		{
+				if(line<lines.length-1){
+				
+					if(lines[line].length>0){
+						if(tempText.length<16){ tempText = "<XMP>" + lines[line].substring(0, a-1) + "</XMP><br>"; }
+						else{ tempText = tempText + "<XMP>" + lines[line].substring(0,a-1) + "</XMP><br>"; }
+					}
+					
 					a=0; 
 					line++;
-					var print = "<XMP>";
-					for(var b=0; b<line; b++){ print += lines[b] + "\n"; }
-					webdesign[0].innerHTML = print + "</XMP>";
-					webdesign[1].innerHTML = "";
+					text.innerHTML = tempText;
 					
 				}
 				
 				// if everything is printed
 				else{ 
+				
+					// set section to shift from code to text
+					setTimeout(function(){
+						
+						// remove XMP tags
+						tempText = tempText.replace(/<\/XMP><br>/g, "");
+						tempText = tempText.replace(/<XMP>/g, "");
+						
+						// set opacity value
+						text.style.opacity = 1;
+						
+						var fadeOut = setInterval(function(){
+							
+							// fade
+							if(text.style.opacity>0){ text.style.opacity = parseFloat(text.style.opacity) - .05; }
+							
+							// after fade is complete
+							else{ 
+							
+								// swap code for text
+								text.innerHTML = tempText;
+								
+								// set pause before fadeIn
+								setTimeout(function(){
+								
+									// fadeIn
+									var fadeIn = setInterval(function(){
+										if(text.style.opacity<1){ text.style.opacity = parseFloat(text.style.opacity) + .05; }
+										else{ clearInterval(fadeIn); }
+									}, 20);
+									
+									clearInterval(fadeOut); 
+									
+								}, 50);
+								
+							}
+							
+						}, 20);
+						
+						
+						
+						
+						
+					}, 500);
 					clearInterval(printLetter);
-					webdesign[1].innerHTML = "";
 				}
 				
 			}
 			
-		}, 30);
+		}, 20);
 		
 	}
 
