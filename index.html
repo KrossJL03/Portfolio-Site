@@ -77,6 +77,7 @@ h1 .blinker{ height: 20pt; width: 2px; margin: 5px 0px -4px 0px; }
 
 ul{
 	list-style-type: square;
+	margin: 16px 0px 16px 0px;
 }
 
 nav{
@@ -151,14 +152,6 @@ nav ul li:hover a{
 	box-sizing: border-box;
 }
 
-.container{
-	display: flex;
-}
-
-.item{
-	flex-grow: 1;
-}
-
 .github{
 	background: #333;
 	border-radius: 10px;
@@ -175,52 +168,14 @@ nav ul li:hover a{
 	display: block;
 }
 
-XMP{
-	display: inline-block;
-	font-family: "Courier New", Courier, monospace;
-	padding: 0px;
-	margin: 0px;
-	line-height: 13pt;
-	font-size: 10pt;
-}
-
-.tag{
-	color: #00f;
-}
-
 .code{
 	font-family: "Courier New", Courier, monospace;
 	font-size: 10pt;
 	line-height: 12pt;
-}
-/*
-.code p,
-.code ul,
-.code li{
-	margin: 0px;
-	padding: 0px;
-	display: block;
+	color: #666;
 }
 
-.code li{
-	margin-left: 30px;
-	list-style-type: none;
-}
-
-.code p:before,
-.code p:after,
-.code ul:before,
-.code ul:after,
-.code li:before,
-.code li:after	{ color: #00f; }
-
-.code p:before	{ content: "<p>"; }
-.code p:after	{ content: "</p>"; }
-.code li:before	{ content: "<li>"; }
-.code li:after	{ content: "</li>"; }
-.code ul:before	{ content: "<ul>"; }
-.code ul:after	{ content: "</ul>"; }
-*/
+.tag{ color: #33f; }
 
 .indent{ margin-left: 30px; }
 
@@ -308,15 +263,13 @@ Part of a web-based, virtual pets game combining elements from Neopets, Harvest 
 			</ul>
 		</td>
 	</tr>
-</table>
-
 	<tr>
 		<td colspan="2" width="100%" valign="top">
 			<p>A simple click-based take on Solitaire using vanilla Javascript.</p>
 			<div class="github"><a href=""><img src="github.png"></a></div>
 		</td>
 	</tr>
-
+</table>
 </div>
 
 <div id="graphicdesign">
@@ -373,12 +326,12 @@ function playHeader(h){
 	
 }
 
-displayWebDesign();
+display("webdesign");
 
-function displayWebDesign(){
+function display(content){
 
 	// grab text from TDs
-	var text = document.getElementById("webdesign").getElementsByTagName("td");
+	var text = document.getElementById(content).getElementsByTagName("td");
 	
 	// cycle through each TD
 	for(var a=0; a<text.length; a++){
@@ -387,15 +340,16 @@ function displayWebDesign(){
 		var lines = text[a].innerHTML.split(/\r\n|\r|\n/g);;
 		
 		// empty and format TD
+		var tempText = text[a].innerHTML;
 		text[a].innerHTML = "";
 		text[a].classList.add("code");
 		
 		// print letters
-		var printLetter = printing(lines, text[a]);
+		setTimeout(printing, (1500 * a), lines, text[a], tempText);
 
 	}
 	
-	function printing(lines, text){
+	function printing(lines, text, tempText){
 	
 		var line = 0;			// line of text
 		var a=0;				// letter of line
@@ -415,7 +369,7 @@ function displayWebDesign(){
 					// print tag class
 					var print = "<span class='tag";
 
-						// if / is found, cose heirarchy
+						// if / is found, close heirarchy
 						if(lines[line].substring(a, a+1)==="/"){ indent = indent-2; }
 						
 						for(var b=0; b<indent; b++){ print += " indent"; }
@@ -453,14 +407,54 @@ function displayWebDesign(){
 					line++;
 				}
 				
-				else{ clearInterval(printLetter); }
-				
-			}
+				// if everything is printed
+				else{ 
 			
-		}, 200);
+					// set section to shift from code to text
+					setTimeout(function(){
+					
+						// set opacity value
+						text.style.opacity = 1;
+					
+						var fadeOut = setInterval(function(){
+						
+							// fade
+							if(text.style.opacity>0){ text.style.opacity = parseFloat(text.style.opacity) - .05; }
+						
+							// after fade is complete
+							else{ 
+						
+								// swap code for text
+								text.innerHTML = tempText;
+								text.classList.remove("code");
+								
+								// set pause before fadeIn
+								setTimeout(function(){
+								
+									// fadeIn
+									var fadeIn = setInterval(function(){
+										if(text.style.opacity<1){ text.style.opacity = parseFloat(text.style.opacity) + .05; }
+										else{ clearInterval(fadeIn); }
+									}, 20);
+									
+									clearInterval(fadeOut); 
+									
+								}, 50);
+							
+							}
+						
+						}, 20);						
+					
+					}, 500);
+					clearInterval(printLetter);
+				}
+			
+			}
 		
-	}
+		}, 20);
 
+	}
+	
 }
 
 function old(){
