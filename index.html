@@ -19,7 +19,8 @@ table{
 	margin: 0px;
 	padding: 0px;
 	font-family: Verdana, Geneva, sans-serif;
-	font-size: 11pt;
+	font-size: 10pt;
+	line-height: 14pt;
 }
 
 h1{
@@ -77,7 +78,7 @@ h1 .blinker{ height: 20pt; width: 2px; margin: 5px 0px -4px 0px; }
 
 ul{
 	list-style-type: square;
-	margin: 16px 0px 16px 0px;
+	margin: 27px 0px 27px 0px;
 }
 
 nav{
@@ -91,6 +92,7 @@ nav{
 	font-family: "Courier New", Courier, monospace;
 	text-transform: uppercase;
 	color: #69c;
+	font-size: 11pt;
 	padding: 0px 0px 0px 15px;
 }
 
@@ -145,8 +147,32 @@ nav ul li:hover a{
 	color: #9cf;
 }
 
-#content{
+#headline,
+#footline{
 	width: 100%;
+	height: 30px;
+	background: #9cf;
+	padding: 5px 0px 0px 165px;
+	box-sizing: border-box;
+}
+
+#headline{
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	
+}
+
+#footline{
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+}
+	
+
+#mySite{
+	width: 100%;
+	box-sizing: border-box;
 	margin: 0px;
 	padding: 0px;
 }
@@ -179,34 +205,40 @@ nav ul li:hover a{
 .code{
 	font-family: "Courier New", Courier, monospace;
 	font-size: 10pt;
-	line-height: 12pt;
+	line-height: 14pt;
 	color: #666;
 }
 
+
+
 .tag{ color: #33f; }
 
-.indent{ margin-left: 30px; }
+.indent{ padding-left: 30px; }
+
+.indent{
+	border-left: 1px dotted #666;
+}
+
+#headline button{
+	border: none;
+	display: flex;
+	background: #fff;
+	cursor: pointer;
+	width: 150px;
+	height: 100%;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
 
 
 </style>
 </head>
 <body>
 
+<div id="headline"><button id="mySiteButton">mySite.html</button></div>
+<div id="footline"></div>
+
 <nav>
-	127<br>
-	128<br>
-	129<br>
-	130<br>
-	131<br>
-	132<br>
-	133<br>
-	134<br>
-	135<br>
-	136<br>
-	137<br>
-	138<br>
-	139<br>
-	140<br>
 	<ul>
 		<li><a href="#home" id="homeTag">Home</a></li>
 		<li><a href="#aboutme" id="aboutmeTag">About Me</a></li>
@@ -216,7 +248,7 @@ nav ul li:hover a{
 	</ul>
 </nav>
 
-<div id="content">
+<div id="mySiteContent">
 
 <div id="home" name="home" class="page">
 <h1>Home</h1>
@@ -249,7 +281,7 @@ nav ul li:hover a{
 			<img src="">
 		</td>
 		<td>
-			<h2>Reflexology</h2>
+			<div id="reflexologyTag">Reflexology.html</a>
 			<div class="github"><a href=""><img src="github.png"></a></div>
 		</td>
 	</tr>
@@ -258,7 +290,7 @@ nav ul li:hover a{
 			<img src="">
 		</td>
 		<td>
-			<h2></h2>
+			<div id="forestgame">Forest Game.html</a>
 			<p>Part of a web-based, virtual pets game combining elements from Neopets, Harvest Moon, and Dungeons & Dragons. This section involves a daily click event used to optain materials, seeds, and bait for crafting tools, gardening, and fishing respectively. Both gardening and fishing are done through idle gameplay.</p>
 			<div class="github"><a href=""><img src="github.png"></a></div>
 		</td>
@@ -331,10 +363,84 @@ nav ul li:hover a{
 
 </div>
 
+<div id="solitaireContent">
+<p>I wanted to try my hand at coding a simple game.
+
+<h2>Tasks:</h2>
+<ul>
+	<li>create UI layout</li>
+	<li>design framework for storing cards</li>
+	<li>render a deck of playing cards</li>
+	<li>code rules for card placement</li>
+</ul>
+
+<h2>Creating the UI</h2>
+<p>I chose to go with the standard Solitaire layout for pile placements as it is the most intuitive for players. I chose to start out with clicking as the method for placing cards as opposed to dragging. I saw clicking as a more natural approach, especially for laptop users equipted with only touchpads.</p>
+
+<h2>Designing the Framework</h2>
+<p>I needed a way to save the location of each card. I decided to have wach pile--the deck, drawn cards, discard piles, and playable piles--be it's own array.
+
+<h3>Piles containing face-up AND face-down cards</h3>
+<p>My earliest problem was figuring out how to handle which cards were visible to the user. The very first test run showed only the top card of the pile, which is acceptable at the start of the game, but once a new card is added to the pile the previous cards would flip and become invisible to the user.</p>
+
+<p>The "card" element was given a boolean assigned to the card to indicate if the card had been "flipped" or not. This way cards that had already been played mearly needed to have their boolean value set to true in order to remain visible to the user. This also helped with cycling through the deck, as after going through the deck once all the cards must be flipped back and returned to the deck. The presense of the "flipped" value made it simple to reset the deck</p>
+
+<h3>Drawn cards</h3>
+<p>Another prominant issue was allowing for the drawn cards to be visible at all times. Cards are drawn in groups of 3, and to allow for 3 cards to be visible at once they were grouped into "sets" of 3 using a div. However, once the top card was played, only the remaining 2 cards were visible instead of what were now the top 3 cards of the drawn pile</p>
+
+<p>Solving this issue was challenging. I didn't play solitaire much myself to know what the pile should look like, and after some research found that a popular solution was to shit the top card from the previous set to the bottom of the current. But how?</p>
+
+<p>The solution was to check how many cards currently resided in the "drawn" pile and get the remainder when divided by 3. The first set should contain that many cards, while each set to offer simply contained the usual 3</p>
+
+<h2>Rendering the Deck</h2>
+[CARD DESIGNS]
+
+<h2>Coding the Rules</h2>
+<p>While assigning the logic to the game, many changes needed to be made to the original "card" object</p>
+<ul>
+	<li>Check a card's value</li>
+	<li>Check a card's suit</li>
+	<li>Check a card's color</li>
+</ul>
+<p>Up until this point I had used strings to hold the "suit" value. Which was acceptable when all you needed was to know whether two suits matched or not. However, this method did not allow me to compare the "color" of two cards when it came to building piles. Instead I decided to change the "suit" value to an integer where odd numbers were red and even numbers were black. This way I could determine easily if a card had the same suit as another for adding to the discard pile, as well as if their colors were opposite for building piles</p>
+
+</div>
+
+</div>
+
 </body>
 
 <script>
 
+var mySite = new project("mySite", ["home", "aboutme", "currentprojects", "webdeisgn", "graphicdesign"]);
+var mySite = new project("solitaire", []);
+
+document.getElementById("reflexologyTag").onclick = 	function(){ addButton("reflexology"); }
+
+function project(name, links){
+
+	var name = name;
+	var links = links;
+	
+	var showTab = function(){ 
+		document.getElementbyId("headline").innerHTML += "<button id='" + tab + "Button'>" + tab + ".html</button>";
+	}
+	
+	var display = function(){
+	
+		// show content
+		document.getElementById(name + "Content").style.display = visible;
+		
+		// highlight tab
+		var tabs = document.getElementsByClassName("tab");
+		for(var a=0; a<tabs.length; a++){ tabs[a].style.opacity = .5; }
+		document.getElementById(name + "Tab").style.opacity = 1;
+	
+	}
+	
+}
+
+/*
 var pages = document.getElementsByClassName("page");
 var headers = [];
 var content = [];
@@ -342,13 +448,12 @@ var content = [];
 for(var a=0; a<pages.length; a++){ getText(pages[a]); }
 
 var displayed = [false, false, false, false, false];
-
-																						   display(0, "home"); 				displayed[0] = true;
+																					   display(0, "home"); 				displayed[0] = true;
 document.getElementById("aboutmeTag").onclick = 			function(){ if(!displayed[1]){ display(1, "aboutme"); 			displayed[1] = true; } }
 document.getElementById("currentprojectsTag").onclick = 	function(){ if(!displayed[2]){ display(2, "currentprojects"); 	displayed[2] = true; } }
 document.getElementById("webdeisgnTag").onclick = 			function(){ if(!displayed[3]){ display(3, "webdesign"); 		displayed[3] = true; } }
 document.getElementById("graphicdesignTag").onclick = 		function(){ if(!displayed[4]){ display(4, "graphicdesign"); 	displayed[4] = true; } }
-
+*/
 function getText(page){
 
 	var h1    = page.getElementsByTagName("H1");
