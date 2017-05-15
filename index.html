@@ -58,6 +58,7 @@ h1{
 	margin: 0px;
 	padding: 0px;
 	background: #3D4451;
+	display: block;
 }
 
 ul{
@@ -80,20 +81,17 @@ ul{
 
 .blinker{
 	position: relative;
-	background: #000;
+	background: #9CA5B4;
 	width: 1px;
 	margin: 0px 0px -4px 0px;
 	box-sizing: border-box;
 	opacity: 1;
-	height: 11pt;
+	height: 12pt;
 	display: inline-block;
 	animation-name: blink;
     animation-duration: 1.25s;
     animation-iteration-count: infinite;
 }
-
-h1 .blinker{ height: 20pt; width: 2px; margin: 5px 0px -4px 0px; }
-
 
 /***************************
 	NAVIGATION			
@@ -148,7 +146,7 @@ nav ul li a{
 	color: #9CA5B4;
 
 	transition: 		all .1s ease-in-out;
-	-o-transition: 		all .1s ease-in-out;
+	-moz-transition: 	all .1s ease-in-out;
 	-webkit-transition: all .1s ease-in-out;
 }
 
@@ -250,8 +248,21 @@ nav ul li:hover a{
 	ANIMATED TEXT		
 ***************************/
 
+table.page tr td{
+	transition: 		all .5s ease-in-out;
+	-moz-transition: 	all .5s ease-in-out;
+	-webkit-transition: all .5s ease-in-out;
+}
+
+.page li{
+	text-align: left;
+	list-style-type: square;
+	padding: 0px;
+	margin-left: 30px;
+}
+
 .tag{ 
-	dislay: none; 
+	display: none; 
 	visibility: hidden;
 	width: 0px;
 	height: 0px;
@@ -266,18 +277,17 @@ nav ul li:hover a{
 	overflow: auto;
 }
 
+.code li{
+	list-style-type: none;
+}
+
 .red{ color: #DE6B69; }
 .orange{ color: #DD9C66; }
 .green{ color: #8CB379; }
 
 .indent{ 
-	padding-left: 30px;
+	margin-left: 30px;
 	border-left: 1px dotted #666;
-}
-
-.code li{
-	list-style-type: none;
-	padding-left: 30px;
 }
 
 
@@ -303,9 +313,6 @@ nav ul li:hover a{
 
 
 
-
-
-
 </style>
 </head>
 <body>
@@ -328,7 +335,7 @@ nav ul li:hover a{
 
 <div id="mySiteContent" class="content">
 
-<table id="home" name="home" class="code">
+<table id="home" name="home" class="page code">
 
 <tr><th>0</th><td></td></tr>
 
@@ -434,7 +441,7 @@ nav ul li:hover a{
 
 </table>
 
-<table id="aboutme" name="aboutme" class="code">
+<table id="aboutme" name="aboutme" class="page code">
 
 <tr><th>50</th><td></td></tr>
 
@@ -538,7 +545,7 @@ nav ul li:hover a{
 
 </table>
 
-<table id="currentprojects" name="currentprojects" class="code">
+<table id="currentprojects" name="currentprojects" class="page code">
 
 <tr><th>100</th><td></td></tr>
 
@@ -642,7 +649,7 @@ nav ul li:hover a{
 
 </table>
 
-<table id="webdesign" name="webdesign" class="code">
+<table id="webdesign" name="webdesign" class="page code">
 <!--
 			<h3>Software I'm proficient in:</h3>
 			<ul>
@@ -760,7 +767,7 @@ nav ul li:hover a{
 
 </table>
 
-<table>
+<table id="graphicdesign" name="graphicdesign" class="page code">
 
 <tr><th>200</th><td></td></tr>
 
@@ -768,7 +775,7 @@ nav ul li:hover a{
 
 <tr><th>202</th><td></td></tr>
 
-<tr><th>203</th><td><h1><div class="tag"><<span class="red">h1</span>></div>Current Projects<div class="tag"><&#47;<span class="red">h1</span>></div></h1></td></tr>
+<tr><th>203</th><td><h1><div class="tag"><<span class="red">h1</span>></div>Graphic Design<div class="tag"><&#47;<span class="red">h1</span>></div></h1></td></tr>
 
 <tr><th>204</th><td></td></tr>
 
@@ -948,6 +955,14 @@ nav ul li:hover a{
 var mySite = new project("mySite", ["home", "aboutme", "currentprojects", "webdeisgn", "graphicdesign"]);
 var mySite = new project("solitaire", []);
 
+var pages = document.getElementsByClassName("page");
+
+																		display(pages[0]);
+document.getElementById("aboutmeTag").onclick = 			function(){ display(pages[1]); }
+document.getElementById("currentprojectsTag").onclick = 	function(){ display(pages[2]); }
+document.getElementById("webdeisgnTag").onclick = 			function(){ display(pages[3]); }
+document.getElementById("graphicdesignTag").onclick = 		function(){ display(pages[4]); }
+
 document.getElementById("reflexologyTag").onclick = 	function(){ addButton("reflexology"); }
 
 function project(name, links){
@@ -973,10 +988,71 @@ function project(name, links){
 	
 }
 
-var pages = document.getElementsByClassName("page");
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
 
-for(var a=0; a<pages.length; a++){ pages[a].classList.add("code"); }
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
 
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+
+function display(page){
+	
+	if(page.className.indexOf("code")>-1){
+		var header = page.getElementsByTagName("H1");
+		var title = header[0].innerHTML.substring(58, header[0].innerHTML.length - 59);
+		header[0].innerHTML = '<div class="tag"><<span class="red">h1</span>></div><div class="blinker"></div><div class="tag"><&#47;<span class="red">h1</span>></div>';
+		
+		setTimeout(displayHeader, 1000, header[0], title);
+		setTimeout(translateCode, (title.length*40) + 800, page);
+	}
+	
+}
+
+function displayHeader(header, title){
+
+	var a = 0;
+
+	var printLetter = setInterval(function(){
+	
+		header.innerHTML = '<div class="tag"><<span class="red">h1</span>></div>' + title.substring(0, ++a) + '<div class="blinker"></div><div class="tag"><&#47;<span class="red">h1</span>></div>';
+		if(a>=title.length){clearInterval(printLetter)};
+		
+	}, 40);	
+	
+}
+
+function translateCode(page){
+
+	setTimeout(function(){ 
+		var TDs = page.getElementsByTagName("td");
+		for(var a=0; a<TDs.length; a++){ TDs[a].style.opacity = 0; }
+	}, 1300);
+	
+	setTimeout(function(){ 
+		page.classList.remove("code"); 
+		var TDs = page.getElementsByTagName("td");
+		for(var a=0; a<TDs.length; a++){ TDs[a].style.opacity = 1; }
+	}, 1600);
+
+}
 
 /*
 var pages = document.getElementsByClassName("page");
@@ -1009,31 +1085,6 @@ function getText(page){
 	}
 	
 	content.push(textArray);
-	
-}
-
-function display(h, page){
-	
-	setTimeout(displayHeader, 1000, h);
-	setTimeout(displayContent, 2500, h, page);
-}
-
-function displayHeader(h){
-
-		var h1 = pages[h].getElementsByTagName("H1");
-
-		var a=0;
-		h1[0].style.transition = "background-color .1s";
-		h1[0].style.backgroundColor = "#3D4451";
-
-		setTimeout(function(){
-			var printLetter = setInterval(function(){
-			
-				h1[0].innerHTML = headers[h].substring(0, ++a) + '<div class="blinker"></div>';
-				if(a>=headers[h].length){clearInterval(printLetter)};
-				
-			}, 20);	
-		}, 1000);
 	
 }
 
