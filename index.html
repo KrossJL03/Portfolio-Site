@@ -31,18 +31,6 @@ table{
 	font-size: 10pt;
 	line-height: 14pt;
 }
-/*
-h1{
-	font-family: "Courier New", Courier, monospace;
-	margin: 0px;
-	padding: 35px 0px 35px 0px;
-	display: block;
-	background: #282B34;
-	line-height: 30pt;
-	font-size: 22pt;
-	height: 28pt;
-}
-*/
 
 h1,
 h2,
@@ -83,7 +71,7 @@ ul{
 	position: relative;
 	background: #9CA5B4;
 	width: 1px;
-	margin: 0px 0px -4px 0px;
+	margin: 0px 0px -2px 0px;
 	box-sizing: border-box;
 	opacity: 1;
 	height: 12pt;
@@ -241,6 +229,27 @@ nav ul li:hover a{
 	margin: 0px 0px 0px 5px;
 }	
 
+::selection{
+	color: #fff;
+	background: #A8AFBB;
+}
+
+#headline button::selection{
+	color: #C7CAD0;
+	background: none;
+}
+
+nav::selection,
+nav a::selection{
+	color: #9CA5B4;
+	background: none;
+}
+
+th::selection{ 
+	color: #4B5262;
+	background: none; 
+}
+
 #solitaireContent{ display: none; }
 
 
@@ -256,9 +265,14 @@ table.page tr td{
 
 .page li{
 	text-align: left;
-	list-style-type: square;
+	list-style-type: none;
 	padding: 0px;
-	margin-left: 30px;
+}
+
+.page li:before {
+	content: "▪ ";
+	padding-right: 10px;
+	color: #DE6B69;
 }
 
 .tag{ 
@@ -277,18 +291,18 @@ table.page tr td{
 	overflow: auto;
 }
 
-.code li{
-	list-style-type: none;
+.code li:before{
+	content: none;
 }
 
-.red{ color: #DE6B69; }
-.orange{ color: #DD9C66; }
-.green{ color: #8CB379; }
+.indent{ padding-left: 30px; }
+.indent2{ padding-left: 60px; }
 
-.indent{ 
-	margin-left: 30px;
-	border-left: 1px dotted #666;
-}
+.red		{ color: #DE6B69; }
+.orange		{ color: #DD9C66; }
+.green		{ color: #8CB379; }
+
+
 
 
 /***************************
@@ -453,11 +467,11 @@ table.page tr td{
 
 <tr><th>54</th><td></td></tr>
 
-<tr><th>55</th><td><p><div class="tag"><<span class="red">p</span>></div>I first got into Web Design as I was entering highschool. I was active on websites like deviantArt and tumblr which allowed users to customize their profile pages through the use of HTML, CSS, and Javascript. I went on to take classes at my local community college for a few years before going away to a university to hone my skills further. I enjoy helping friends create and debug their own coding projects, be it personal websites or designing snippets for websites they frequent.<div class="tag"><&#47;<span class="red">p</span>></div></p></td></tr>
+<tr><th>55</th><td class="indent"><p><div class="tag"><<span class="red">p</span>></div>I first got into Web Design as I was entering highschool. I was active on websites like deviantArt and tumblr which allowed users to customize their profile pages through the use of HTML, CSS, and Javascript. I went on to take classes at my local community college for a few years before going away to a university to hone my skills further. I enjoy helping friends create and debug their own coding projects, be it personal websites or designing snippets for websites they frequent.<div class="tag"><&#47;<span class="red">p</span>></div></p></td></tr>
 
 <tr><th>56</th><td></td></tr>
 
-<tr><th>57</th><td><p><div class="tag"><<span class="red">p</span>></div>In my free time I write stories, draw, and play videogames. I'm active in online art communities by taking commissions, hosting contests, and participating in group events. I'd like to create a small game of my own one day.<div class="tag"><&#47;<span class="red">p</span>></div></p></td></tr>
+<tr><th>57</th><td class="indent"><p><div class="tag"><<span class="red">p</span>></div>In my free time I write stories, draw, and play videogames. I'm active in online art communities by taking commissions, hosting contests, and participating in group events. I'd like to create a small game of my own one day.<div class="tag"><&#47;<span class="red">p</span>></div></p></td></tr>
 
 <tr><th>58</th><td></td></tr>
 
@@ -557,19 +571,19 @@ table.page tr td{
 
 <tr><th>104</th><td></td></tr>
 
-<tr><th>105</th><td><div id="reflexologyTag">Reflexology.html</a></td></tr>
+<tr><th>105</th><td class="indent"><div id="reflexologyTag">Reflexology</a></td></tr>
 
-<tr><th>106</th><td><div class="github"><a href=""><img src="github.png"></a></div></td></tr>
+<tr><th>106</th><td class="indent">Summary</td></tr>
 
-<tr><th>107</th><td></td></tr>
+<tr><th>107</th><td class="indent">Github | Case Study</td></tr>
 
-<tr><th>108</th><td><div id="forestgame">Forest Game.html</a></td></tr>
+<tr><th>108</th><td></td></tr>
 
-<tr><th>109</th><td><p>Part of a web-based, virtual pets game combining elements from Neopets, Harvest Moon, and Dungeons & Dragons. This section involves a daily click event used to optain materials, seeds, and bait for crafting tools, gardening, and fishing respectively. Both gardening and fishing are done through idle gameplay.</p></td></tr>
+<tr><th>109</th><td class="indent"><div id="forestgame">Forest Game</div></td></tr>
 
-<tr><th>110</th><td><div class="github"><a href=""><img src="github.png"></a></div></td></tr>
+<tr><th>110</th><td class="indent"><p>Part of a web-based, virtual pets game combining elements from Neopets, Harvest Moon, and Dungeons & Dragons. This section involves a daily click event used to optain materials, seeds, and bait for crafting tools, gardening, and fishing respectively. Both gardening and fishing are done through idle gameplay.</p></td></tr>
 
-<tr><th>111</th><td></td></tr>
+<tr><th>111</th><td class="indent">Github | Case Study</td></tr>
 
 <tr><th>112</th><td></td></tr>
 
@@ -650,20 +664,6 @@ table.page tr td{
 </table>
 
 <table id="webdesign" name="webdesign" class="page code">
-<!--
-			<h3>Software I'm proficient in:</h3>
-			<ul>
-				<li>Notepad++</li>
-				<li>Adobe Dreamweaver</li>
-				<li>MySQL</li>
-				<li>Eclipse</li>
-				<li>Netbeans</li>
-			</ul>
-			
-
-			<p>A simple click-based take on Solitaire using vanilla Javascript.</p>
-			<div class="github"><a href=""><img src="github.png"></a></div>
--->
 
 <tr><th>150</th><td></td></tr>
 
@@ -675,53 +675,53 @@ table.page tr td{
 
 <tr><th>154</th><td></td></tr>
 
-<tr><th>155</th><td><h3><div class="tag"><<span class="red">h3</span>></div>Languages I'm proficient in:<div class="tag"><&#47;<span class="red">h3</span>></div></h3></td></tr>
+<tr><th>155</th><td class="indent"><h3><div class="tag"><<span class="red">h3</span>></div>Languages I'm proficient in:<div class="tag"><&#47;<span class="red">h3</span>></div></h3></td></tr>
 
-<tr><th>156</th><td><div class="tag"><<span class="red">ul</span>></div></td></tr>
+<tr><th>156</th><td class="indent"><div class="tag"><<span class="red">ul</span>></div></td></tr>
 
-<tr><th>157</th><td><li><div class="tag"><<span class="red">li</span>></div>HTML<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>157</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>HTML<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>158</th><td><li><div class="tag"><<span class="red">li</span>></div>CSS<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>158</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>CSS<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>159</th><td><li><div class="tag"><<span class="red">li</span>></div>Bootstrap<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>159</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Bootstrap<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>160</th><td><li><div class="tag"><<span class="red">li</span>></div>Javascript<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>160</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Javascript<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>161</th><td><li><div class="tag"><<span class="red">li</span>></div>jQuery<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>161</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>jQuery<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>162</th><td><li><div class="tag"><<span class="red">li</span>></div>PHP<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>162</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>PHP<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>163</th><td><li><div class="tag"><<span class="red">li</span>></div>Java<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>163</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Java<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>164</th><td><div class="tag"><&#47;<span class="red">ul</span>></div></td></tr>
+<tr><th>164</th><td class="indent"><div class="tag"><&#47;<span class="red">ul</span>></div></td></tr>
 
 <tr><th>165</th><td></td></tr>
 
-<tr><th>166</th><td><h3><div class="tag"><<span class="red">h3</span>></div>Software I'm proficient in:<div class="tag"><&#47;<span class="red">h3</span>></div></h3></td></tr>
+<tr><th>166</th><td class="indent"><h3><div class="tag"><<span class="red">h3</span>></div>Software I'm proficient in:<div class="tag"><&#47;<span class="red">h3</span>></div></h3></td></tr>
 
-<tr><th>167</th><td><div class="tag"><<span class="red">ul</span>></div></td></tr>
+<tr><th>167</th><td class="indent"><div class="tag"><<span class="red">ul</span>></div></td></tr>
 
-<tr><th>168</th><td><li><div class="tag"><<span class="red">li</span>></div>Adobe Dreamweaver<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>168</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe Dreamweaver<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>169</th><td><li><div class="tag"><<span class="red">li</span>></div>Eclipse<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>169</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Eclipse<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>170</th><td><li><div class="tag"><<span class="red">li</span>></div>Netbeans<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>170</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Netbeans<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>171</th><td><li><div class="tag"><<span class="red">li</span>></div>Notepad++<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>171</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Notepad++<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>172</th><td><div class="tag"><&#47;<span class="red">ul</span>></div></td></tr>
+<tr><th>172</th><td class="indent"><div class="tag"><&#47;<span class="red">ul</span>></div></td></tr>
 
 <tr><th>173</th><td></td></tr>
 
-<tr><th>174</th><td></td></tr>
+<tr><th>174</th><td class="indent"><h3><div class="tag"><<span class="red">h3</span>></div>Projects<div class="tag"><&#47;<span class="red">h3</span>></div></h3></td></tr>
 
 <tr><th>175</th><td></td></tr>
 
-<tr><th>176</th><td></td></tr>
+<tr><th>176</th><td class="indent2"><a href="">Solitaire</a></td></tr>
 
-<tr><th>177</th><td></td></tr>
+<tr><th>177</th><td class="indent2"><p>A simple click-based take on Solitaire using vanilla Javascript.</p></td></tr>
 
-<tr><th>178</th><td></td></tr>
+<tr><th>178</th><td class="indent2">Github | Case Study</td></tr>
 
 <tr><th>179</th><td></td></tr>
 
@@ -779,41 +779,41 @@ table.page tr td{
 
 <tr><th>204</th><td></td></tr>
 
-<tr><th>205</th><td><div id="reflexologyTag">Reflexology.html</a></td></tr>
+<tr><th>205</th><td class="indent"><h3><div class="tag"><<span class="red">h3</span>></div>Software I'm proficient in:<div class="tag"><&#47;<span class="red">h3</span>></div></h3></td></tr>
 
-<tr><th>206</th><td><div class="github"><a href=""><img src="github.png"></a></div></td></tr>
+<tr><th>206</th><td class="indent"><div class="tag"><<span class="red">ul</span>></div></td></tr>
 
-<tr><th>207</th><td></td></tr>
+<tr><th>207</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe Photoshop<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>208</th><td><div id="forestgame">Forest Game.html</a></td></tr>
+<tr><th>208</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe Illustrator<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>209</th><td><p>Part of a web-based, virtual pets game combining elements from Neopets, Harvest Moon, and Dungeons & Dragons. This section involves a daily click event used to optain materials, seeds, and bait for crafting tools, gardening, and fishing respectively. Both gardening and fishing are done through idle gameplay.</p></td></tr>
+<tr><th>209</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe After Effects<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>210</th><td><div class="github"><a href=""><img src="github.png"></a></div></td></tr>
+<tr><th>210</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe Premiere<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>212</th><td></td></tr>
+<tr><th>212</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe Flash<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>212</th><td></td></tr>
+<tr><th>212</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Corel Paint Shop Pro<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>213</th><td></td></tr>
+<tr><th>213</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Paint Tool SAI<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>214</th><td></td></tr>
+<tr><th>214</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Krita<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>215</th><td></td></tr>
+<tr><th>215</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>FireAlpaca<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>216</th><td></td></tr>
+<tr><th>216</th><td class="indent"><div class="tag"><&#47;<span class="red">ul</span>></div></td></tr>
 
 <tr><th>217</th><td></td></tr>
 
-<tr><th>218</th><td></td></tr>
+<tr><th>218</th><td class="indent"><h3><div class="tag"><<span class="red">h3</span>></div>Projects<div class="tag"><&#47;<span class="red">h3</span>></div></h3></td></tr>
 
 <tr><th>219</th><td></td></tr>
 
-<tr><th>220</th><td></td></tr>
+<tr><th>220</th><td class="indent2">Countdown Animation</td></tr>
 
-<tr><th>221</th><td></td></tr>
+<tr><th>221</th><td class="indent2">Summary</td></tr>
 
-<tr><th>222</th><td></td></tr>
+<tr><th>222</th><td class="indent2">Case Study</td></tr>
 
 <tr><th>223</th><td></td></tr>
 
@@ -870,35 +870,6 @@ table.page tr td{
 <tr><th>249</th><td></td></tr>
 
 </table>
-
-</div>
-
-
-<div id="graphicdesign" name="graphicdesign" class="page">
-<h1>Graphic Design Portfolio</h1>
-<table>
-	<tr>
-		<td>
-			<h3>Software I'm proficient in:</h3>
-			<ul>
-				<li>Adobe
-					<ul>
-						<li>Photoshop</li>
-						<li>Illustrator</li>
-						<li>After Effects</li>
-						<li>Premier</li>
-						<li>Flash</li>
-					</ul>	
-				</li>
-				<li>Corel Paint Shop Pro</li>
-				<li>Paint Tool SAI</li>
-				<li>Krita</li>
-				<li>FireAlpaca</li>
-			</ul>
-		</td>
-	</tr>
-</table>
-</div>
 
 </div>
 
