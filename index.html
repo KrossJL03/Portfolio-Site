@@ -120,14 +120,18 @@ nav ul li{
 	text-transform: lowercase;
 	list-style-type: none;
 	padding: 0px;
-	box-sizing: boarder-box;
+	box-sizing: border-box;
 	display: table-row;
 	line-height: 12pt;
 }
 
-nav ul li a{
-	text-decoration: none;
+nav ul li span{
 	display: table-cell;
+}
+
+nav ul li a{
+	display: block;
+	text-decoration: none;
 	vertical-align: middle;
 	padding: 2px 0px 2px 30px;
 	box-sizing: border-box;
@@ -138,9 +142,19 @@ nav ul li a{
 	-webkit-transition: all .1s ease-in-out;
 }
 
-nav ul li:hover a{
+nav ul li a:hover,
+nav ul li span ul li a:hover{
 	background: #2C313A;
 	color: #C7CAD0;
+}
+
+nav ul li span ul{
+	position: relative;
+	top: 0px;
+}
+
+nav ul li span ul li span a{
+	padding: 2px 0px 2px 50px;
 }
 
 #headline,
@@ -263,6 +277,14 @@ table.page tr td{
 	-webkit-transition: all .5s ease-in-out;
 }
 
+.page a:link,
+.page a:hover,
+.page a:visited,
+.page a:active,
+.page a:focus{
+	color: #8CB379;
+}
+
 .page li{
 	text-align: left;
 	list-style-type: none;
@@ -289,6 +311,15 @@ table.page tr td{
 	width: auto;
 	height: auto;
 	overflow: auto;
+}
+
+.code a:link,
+.code a:hover,
+.code a:visited,
+.code a:active,
+.code a:focus{
+	color: #9CA5B4;
+	text-decoration: none;
 }
 
 .code li:before{
@@ -336,11 +367,23 @@ table.page tr td{
 <nav>
 	Folder
 	<ul>
-		<li><a href="#home" id="homeTag">Home</a></li>
-		<li><a href="#aboutme" id="aboutmeTag">About Me</a></li>
-		<li><a href="#currentprojects" id="currentprojectsTag">Current Projects</a></li>
-		<li><a href="#webdesign" id="webdeisgnTag">Web Design</a></li>
-		<li><a href="#graphicdesign" id="graphicdesignTag">Graphic Design</a></li>
+		<li><span><a href="#home" id="homeTag">Home</a></span></li>
+		<li><span><a href="#aboutme" id="aboutmeTag">About Me</a></span></li>
+		<li><span><a href="#currentprojects" id="currentprojectsTag">Current Projects</a>
+		</span></li>
+		<li><span><a href="#webdesign" id="webdesignTag">Web Design</a>
+			<ul>
+				<li><span><a href="#webdesignproj" id="webdesignprojTag">Projects</a></span></li>
+				<li><span><a href="#webdesignlang" id="webdesignlangTag">Languages</a></span></li>
+				<li><span><a href="#webdesignsoft" id="webdesignsoftTag">Software</a></span></li>
+			</ul>
+		</span></li>
+		<li><span><a href="#graphicdesign" id="graphicdesignTag">Graphic Design</a>
+			<ul>
+				<li><span><a href="#graphicdesignproj" id="graphicdesignprojTag">Projects</a></span></li>
+				<li><span><a href="#graphicdesignsoft" id="graphicdesignsoftTag">Software</a></span></li>
+			</ul>
+		</span></li>
 	</ul>
 </nav>
 
@@ -467,11 +510,11 @@ table.page tr td{
 
 <tr><th>54</th><td></td></tr>
 
-<tr><th>55</th><td class="indent"><p><div class="tag"><<span class="red">p</span>></div>I first got into Web Design as I was entering highschool. I was active on websites like deviantArt and tumblr which allowed users to customize their profile pages through the use of HTML, CSS, and Javascript. I went on to take classes at my local community college for a few years before going away to a university to hone my skills further. I enjoy helping friends create and debug their own coding projects, be it personal websites or designing snippets for websites they frequent.<div class="tag"><&#47;<span class="red">p</span>></div></p></td></tr>
+<tr><th>55</th><td class="indent"><div class="tag"><<span class="red">p</span>></div>I first got into Web Design as I was entering highschool. I was active on websites like deviantArt and tumblr which allowed users to customize their profile pages through the use of HTML, CSS, and Javascript. I went on to take classes at my local community college for a few years before going away to a university to hone my skills further. I enjoy helping friends create and debug their own coding projects, be it personal websites or designing snippets for websites they frequent.<div class="tag"><&#47;<span class="red">p</span>></div></td></tr>
 
 <tr><th>56</th><td></td></tr>
 
-<tr><th>57</th><td class="indent"><p><div class="tag"><<span class="red">p</span>></div>In my free time I write stories, draw, and play videogames. I'm active in online art communities by taking commissions, hosting contests, and participating in group events. I'd like to create a small game of my own one day.<div class="tag"><&#47;<span class="red">p</span>></div></p></td></tr>
+<tr><th>57</th><td class="indent"><div class="tag"><<span class="red">p</span>></div>In my free time I write stories, draw, and play videogames. I'm active in online art communities by taking commissions, hosting contests, and participating in group events. I'd like to create a small game of my own one day.<div class="tag"><&#47;<span class="red">p</span>></div></td></tr>
 
 <tr><th>58</th><td></td></tr>
 
@@ -575,15 +618,27 @@ table.page tr td{
 
 <tr><th>106</th><td class="indent">Summary</td></tr>
 
-<tr><th>107</th><td class="indent">Github | Case Study</td></tr>
+<tr><th>107</th><td class="indent">
+
+<a href="https://github.com/KrossJL03/Reflexology" target="_blank"><div class="tag"><<span class="red">a</span> <span class="orange">href</span>=<span class="green">"https://github.com/KrossJL03/Reflexology"</span>></div>Github<div class="tag"><&#47;<span class="red">a</span>></div></a>
+
+</td></tr>
 
 <tr><th>108</th><td></td></tr>
 
 <tr><th>109</th><td class="indent"><div id="forestgame">Forest Game</div></td></tr>
 
-<tr><th>110</th><td class="indent"><p>Part of a web-based, virtual pets game combining elements from Neopets, Harvest Moon, and Dungeons & Dragons. This section involves a daily click event used to optain materials, seeds, and bait for crafting tools, gardening, and fishing respectively. Both gardening and fishing are done through idle gameplay.</p></td></tr>
+<tr><th>110</th><td class="indent">
 
-<tr><th>111</th><td class="indent">Github | Case Study</td></tr>
+<p>Part of a web-based, virtual pets game combining elements from Neopets, Harvest Moon, and Dungeons & Dragons. This section involves a daily click event used to optain materials, seeds, and bait for crafting tools, gardening, and fishing respectively. Both gardening and fishing are done through idle gameplay.</p></td>
+
+</tr>
+
+<tr><th>111</th><td class="indent">
+
+<a href="https://github.com/KrossJL03/Forest" target="_blank"><div class="tag"><<span class="red">a</span> <span class="orange">href</span>=<span class="green">"https://github.com/KrossJL03/Forest"</span>></div>Github<div class="tag"><&#47;<span class="red">a</span>></div></a>
+
+</td></tr>
 
 <tr><th>112</th><td></td></tr>
 
@@ -667,7 +722,7 @@ table.page tr td{
 
 <tr><th>150</th><td></td></tr>
 
-<tr><th>151</th><td></td></tr>
+<tr><th>151</th><td id="webdesignproj"></td></tr>
 
 <tr><th>152</th><td></td></tr>
 
@@ -675,53 +730,61 @@ table.page tr td{
 
 <tr><th>154</th><td></td></tr>
 
-<tr><th>155</th><td class="indent"><h3><div class="tag"><<span class="red">h3</span>></div>Languages I'm proficient in:<div class="tag"><&#47;<span class="red">h3</span>></div></h3></td></tr>
+<tr><th>155</th><td class="indent"><h3><div class="tag"><<span class="red">h3</span>></div>Projects<div class="tag"><&#47;<span class="red">h3</span>></div></h3></td></tr>
 
-<tr><th>156</th><td class="indent"><div class="tag"><<span class="red">ul</span>></div></td></tr>
+<tr><th>156</th><td></td></tr>
 
-<tr><th>157</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>HTML<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>157</th><td class="indent2">
 
-<tr><th>158</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>CSS<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<a href=""><div class="tag"><<span class="red">a</span> <span class="orange">href</span>=<span class="green">"solitaire.html"</span>></div>Solitaire<div class="tag"><&#47;<span class="red">a</span>></div></a>
 
-<tr><th>159</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Bootstrap<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+</td></tr>
 
-<tr><th>160</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Javascript<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>158</th><td class="indent2" id="webdesignlang"><p>A simple click-based take on Solitaire using vanilla Javascript.</p></td></tr>
 
-<tr><th>161</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>jQuery<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>159</th><td class="indent2">
 
-<tr><th>162</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>PHP<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<a href="https://github.com/KrossJL03/Solitaire" target="_blank"><div class="tag"><<span class="red">a</span> <span class="orange">href</span>=<span class="green">"https://github.com/KrossJL03/Solitaire"</span>></div>Github<div class="tag"><&#47;<span class="red">a</span>></div></a>
 
-<tr><th>163</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Java<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+</td></tr>
 
-<tr><th>164</th><td class="indent"><div class="tag"><&#47;<span class="red">ul</span>></div></td></tr>
+<tr><th>160</th><td></td></tr>
 
-<tr><th>165</th><td></td></tr>
+<tr><th>161</th><td class="indent"><h3><div class="tag"><<span class="red">h3</span>></div>Languages I'm proficient in:<div class="tag"><&#47;<span class="red">h3</span>></div></h3></td></tr>
 
-<tr><th>166</th><td class="indent"><h3><div class="tag"><<span class="red">h3</span>></div>Software I'm proficient in:<div class="tag"><&#47;<span class="red">h3</span>></div></h3></td></tr>
+<tr><th>162</th><td class="indent"><div class="tag"><<span class="red">ul</span>></div></td></tr>
 
-<tr><th>167</th><td class="indent"><div class="tag"><<span class="red">ul</span>></div></td></tr>
+<tr><th>163</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>HTML<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>168</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe Dreamweaver<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>164</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>CSS<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>169</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Eclipse<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>165</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Bootstrap<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>170</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Netbeans<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>166</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Javascript<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>171</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Notepad++<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>167</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>jQuery<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>172</th><td class="indent"><div class="tag"><&#47;<span class="red">ul</span>></div></td></tr>
+<tr><th>168</th><td class="indent2" id="webdesignsoft"><li><div class="tag"><<span class="red">li</span>></div>PHP<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>173</th><td></td></tr>
+<tr><th>169</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Java<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>174</th><td class="indent"><h3><div class="tag"><<span class="red">h3</span>></div>Projects<div class="tag"><&#47;<span class="red">h3</span>></div></h3></td></tr>
+<tr><th>170</th><td class="indent"><div class="tag"><&#47;<span class="red">ul</span>></div></td></tr>
 
-<tr><th>175</th><td></td></tr>
+<tr><th>171</th><td></td></tr>
 
-<tr><th>176</th><td class="indent2"><a href="">Solitaire</a></td></tr>
+<tr><th>172</th><td class="indent"><h3><div class="tag"><<span class="red">h3</span>></div>Software I'm proficient in:<div class="tag"><&#47;<span class="red">h3</span>></div></h3></td></tr>
 
-<tr><th>177</th><td class="indent2"><p>A simple click-based take on Solitaire using vanilla Javascript.</p></td></tr>
+<tr><th>173</th><td class="indent"><div class="tag"><<span class="red">ul</span>></div></td></tr>
 
-<tr><th>178</th><td class="indent2">Github | Case Study</td></tr>
+<tr><th>174</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe Dreamweaver<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+
+<tr><th>175</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Eclipse<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+
+<tr><th>176</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Netbeans<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+
+<tr><th>177</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Notepad++<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+
+<tr><th>178</th><td class="indent"><div class="tag"><&#47;<span class="red">ul</span>></div></td></tr>
 
 <tr><th>179</th><td></td></tr>
 
@@ -771,7 +834,7 @@ table.page tr td{
 
 <tr><th>200</th><td></td></tr>
 
-<tr><th>201</th><td></td></tr>
+<tr><th>201</th><td id="graphicdesignproj"></td></tr>
 
 <tr><th>202</th><td></td></tr>
 
@@ -779,41 +842,41 @@ table.page tr td{
 
 <tr><th>204</th><td></td></tr>
 
-<tr><th>205</th><td class="indent"><h3><div class="tag"><<span class="red">h3</span>></div>Software I'm proficient in:<div class="tag"><&#47;<span class="red">h3</span>></div></h3></td></tr>
+<tr><th>205</th><td class="indent"><h3><div class="tag"><<span class="red">h3</span>></div>Projects<div class="tag"><&#47;<span class="red">h3</span>></div></h3></td></tr>
 
-<tr><th>206</th><td class="indent"><div class="tag"><<span class="red">ul</span>></div></td></tr>
+<tr><th>206</th><td></td></tr>
 
-<tr><th>207</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe Photoshop<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>207</th><td class="indent2" id="graphicdesignsoft">Countdown Animation</td></tr>
 
-<tr><th>208</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe Illustrator<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>208</th><td class="indent2">Summary</td></tr>
 
-<tr><th>209</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe After Effects<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>209</th><td></td></tr>
 
-<tr><th>210</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe Premiere<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>210</th><td class="indent"><h3><div class="tag"><<span class="red">h3</span>></div>Software I'm proficient in:<div class="tag"><&#47;<span class="red">h3</span>></div></h3></td></tr>
 
-<tr><th>212</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe Flash<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>211</th><td class="indent"><div class="tag"><<span class="red">ul</span>></div></td></tr>
 
-<tr><th>212</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Corel Paint Shop Pro<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>212</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe Photoshop<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>213</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Paint Tool SAI<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>213</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe Illustrator<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>214</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Krita<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>214</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe After Effects<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>215</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>FireAlpaca<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
+<tr><th>215</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe Premiere<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>216</th><td class="indent"><div class="tag"><&#47;<span class="red">ul</span>></div></td></tr>
+<tr><th>216</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Adobe Flash<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>217</th><td></td></tr>
+<tr><th>217</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Corel Paint Shop Pro<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>218</th><td class="indent"><h3><div class="tag"><<span class="red">h3</span>></div>Projects<div class="tag"><&#47;<span class="red">h3</span>></div></h3></td></tr>
+<tr><th>218</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Paint Tool SAI<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>219</th><td></td></tr>
+<tr><th>219</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>Krita<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>220</th><td class="indent2">Countdown Animation</td></tr>
+<tr><th>220</th><td class="indent2"><li><div class="tag"><<span class="red">li</span>></div>FireAlpaca<div class="tag"><&#47;<span class="red">li</span>></div></li></td></tr>
 
-<tr><th>221</th><td class="indent2">Summary</td></tr>
+<tr><th>221</th><td class="indent"><div class="tag"><&#47;<span class="red">ul</span>></div></td></tr>
 
-<tr><th>222</th><td class="indent2">Case Study</td></tr>
+<tr><th>222</th><td></td></tr>
 
 <tr><th>223</th><td></td></tr>
 
@@ -928,11 +991,16 @@ var mySite = new project("solitaire", []);
 
 var pages = document.getElementsByClassName("page");
 
-																		display(pages[0]);
-document.getElementById("aboutmeTag").onclick = 			function(){ display(pages[1]); }
-document.getElementById("currentprojectsTag").onclick = 	function(){ display(pages[2]); }
-document.getElementById("webdeisgnTag").onclick = 			function(){ display(pages[3]); }
-document.getElementById("graphicdesignTag").onclick = 		function(){ display(pages[4]); }
+																		display(pages[0], true);
+document.getElementById("aboutmeTag").onclick = 			function(){ display(pages[1], true); }
+document.getElementById("currentprojectsTag").onclick = 	function(){ display(pages[2], true); }
+document.getElementById("webdesignTag").onclick = 			function(){ display(pages[3], true); }
+document.getElementById("webdesignprojTag").onclick = 		function(){ display(pages[3], true); }
+document.getElementById("webdesignlangTag").onclick = 		function(){ display(pages[3], false); }
+document.getElementById("webdesignsoftTag").onclick = 		function(){ display(pages[3], false); }
+document.getElementById("graphicdesignTag").onclick = 		function(){ display(pages[4], true); }
+document.getElementById("graphicdesignprojTag").onclick = 	function(){ display(pages[4], true); }
+document.getElementById("graphicdesignsoftTag").onclick = 	function(){ display(pages[4], false); }
 
 document.getElementById("reflexologyTag").onclick = 	function(){ addButton("reflexology"); }
 
@@ -984,15 +1052,22 @@ $(document).ready(function(){
   });
 });
 
-function display(page){
+function display(page, animateTitle){
 	
 	if(page.className.indexOf("code")>-1){
-		var header = page.getElementsByTagName("H1");
-		var title = header[0].innerHTML.substring(58, header[0].innerHTML.length - 59);
-		header[0].innerHTML = '<div class="tag"><<span class="red">h1</span>></div><div class="blinker"></div><div class="tag"><&#47;<span class="red">h1</span>></div>';
+	
+		if(animateTitle){
+
+			var header = page.getElementsByTagName("H1");
+			var title = header[0].innerHTML.substring(58, header[0].innerHTML.length - 59);
+			header[0].innerHTML = '<div class="tag"><<span class="red">h1</span>></div><div class="blinker"></div><div class="tag"><&#47;<span class="red">h1</span>></div>';
 		
-		setTimeout(displayHeader, 1000, header[0], title);
-		setTimeout(translateCode, (title.length*40) + 800, page);
+			setTimeout(displayHeader, 1000, header[0], title);
+			setTimeout(translateCode, (title.length*40) + 800, page);
+		}
+		
+		else{ setTimeout(translateCode, 900, page); }
+		
 	}
 	
 }
@@ -1025,149 +1100,7 @@ function translateCode(page){
 
 }
 
-/*
-var pages = document.getElementsByClassName("page");
-var headers = [];
-var content = [];
 
-for(var a=0; a<pages.length; a++){ getText(pages[a]); }
-
-var displayed = [false, false, false, false, false];
-																					   display(0, "home"); 				displayed[0] = true;
-document.getElementById("aboutmeTag").onclick = 			function(){ if(!displayed[1]){ display(1, "aboutme"); 			displayed[1] = true; } }
-document.getElementById("currentprojectsTag").onclick = 	function(){ if(!displayed[2]){ display(2, "currentprojects"); 	displayed[2] = true; } }
-document.getElementById("webdeisgnTag").onclick = 			function(){ if(!displayed[3]){ display(3, "webdesign"); 		displayed[3] = true; } }
-document.getElementById("graphicdesignTag").onclick = 		function(){ if(!displayed[4]){ display(4, "graphicdesign"); 	displayed[4] = true; } }
-*/
-function getText(page){
-
-	var h1    = page.getElementsByTagName("H1");
-	var texts = page.getElementsByTagName("td"); 
-	
-	headers.push(h1[0].innerHTML + " ");
-	h1[0].innerHTML = '<div class="blinker"></div>';
-	
-	var textArray = [];
-	
-	for(var a=0; a<texts.length; a++){
-		textArray.push(texts[a].innerHTML + " ");
-		texts[a].innerHTML = '';
-		texts[a].classList.add("code");
-	}
-	
-	content.push(textArray);
-	
-}
-
-function displayContent(h, page){
-
-	// grab text from TDs
-	var text = document.getElementById(page).getElementsByTagName("td");
-	
-	// cycle through each TD
-	for(var a=0; a<content[h].length; a++){
-	
-		// separate lines
-		var lines = content[h][a].split(/\r\n|\r|\n/g);;
-		
-		// empty and format TD
-		var tempText = content[h][a];
-		
-		// print letters
-		setTimeout(printing, (1500 * a), lines, text[a], tempText);
-
-	}
-	
-	function printing(lines, text, tempText){
-	
-		var line = 0;			// line of text
-		var a=0;				// letter of line
-		var indent = -1;		// heirarchy
-		
-		var printLetter = setInterval(function(){
-			
-			// if this line isn't empty
-			if(lines[line].length>0){
-			
-				// search for <
-				if(lines[line].substring(a, a+1)==="\<"){ 
-				
-					indent++;	// increase heirarchy
-					a++;		// skip to next letter
-					
-					// print tag class
-					var print = "<span class='tag";
-
-						// if / is found, close heirarchy
-						if(lines[line].substring(a, a+1)==="/"){ indent = indent-2; }
-						
-						for(var b=0; b<indent; b++){ print += " indent"; }
-						print += "'>&lt;";
-					
-					// collect tag
-					for(; lines[line].substring(a-1, a)!=="\>"; a++){
-						print += lines[line].substring(a, a+1);
-					}
-					
-					// print tag with formatting
-					print += "</span>";
-					text.innerHTML += print;
-					
-				}
-				
-				// else just print letter
-				else{ text.innerHTML += lines[line].substring(a, ++a); }
-				
-			}
-			
-			// else skip letter
-			else{ a++; }
-			
-			// if the line is finished
-			if(a>lines[line].length){	
-			
-				if(lines[line].length>0){
-					text.innerHTML += "<br>";
-				}
-			
-				// if there are still lines
-				if(line<lines.length-1){
-					a=0;
-					line++;
-				}
-				
-				// if everything is printed
-				else{ 
-			
-					// set section to shift from code to text
-					setTimeout(function(){
-					
-						// set opacity value
-						text.style.opacity = 1;
-						text.style.transition = "opacity 1s";
-						
-						text.style.opacity = 0;
-						
-						setTimeout(function(){
-						
-							text.innerHTML = tempText;
-							text.classList.remove("code");
-							
-							setTimeout(function(){text.style.opacity = 1;}, 75);
-							
-						}, 1000);
-						
-					}, 500);
-					clearInterval(printLetter);
-				}
-			
-			}
-		
-		}, 20);
-
-	}
-	
-}
 
 </script>
 </html>
